@@ -1,0 +1,1 @@
+ load data local infile '/home/davide/Scrivania/Agiw_Final_Project/sorted_extracted_sentences_with_triples_tabs.tsv' into table labeled_triples (first_entity,phrase,second_entity);
