@@ -2,7 +2,9 @@ import csv
 import re
 
 def mapping_triples():
-	with open ("/home/davide/Scrivania/Agiw_Final_Project/dbpedia/dbpedia_mapping_based_triples.tsv","rb") as csvfile:
+	inputFile = "/home/davide/Scrivania/Agiw_Final_Project/dbpedia/dbpedia_untrusted_infobox_triples.tsv"
+	outputFile = "/home/davide/Scrivania/Agiw_Final_Project/clean_untrusted_triples.tsv"
+	with open (inputFile,"rb") as csvfile:
 		csvReader = csv.reader(csvfile,delimiter = "\t")
 		cleanTriples = []
 		for row in csvReader:
@@ -15,7 +17,7 @@ def mapping_triples():
 
 	#print cleanTriples
 
-	with open("/home/davide/Scrivania/Agiw_Final_Project/clean_labeled_triples.tsv", "w+") as csvfile:
+	with open(outputFile, "w+") as csvfile:
 		csvWriter = csv.writer(csvfile,delimiter = "\t")
 		for triple in cleanTriples:
 			csvWriter.writerow(triple)

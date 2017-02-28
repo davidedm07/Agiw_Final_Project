@@ -1,1 +1,4 @@
  load data local infile '/home/davide/Scrivania/Agiw_Final_Project/sorted_extracted_sentences_with_triples_tabs.tsv' into table labeled_triples (first_entity,phrase,second_entity);
+
+
+ insert into agiw_final_project.dbpedia_untrusted_unlabeled_triples (first_entity,relation,second_entity) select p.first_entity, p.relation, p.second_entity from agiw_final_project.dbpedia_untrusted_triples p where not exists (select t.first_entity,t.relation,t.second_entity from agiw_final_project.common_dbpedia_triples t where p.first_entity = t.first_entity and p.relation = t.relation and p.second_entity = t.second_entity );
